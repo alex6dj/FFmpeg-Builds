@@ -23,6 +23,9 @@ ffbuild_dockerbuild() {
     {
         echo "Requires.private: libssl libcrypto zlib"
         echo "Cflags.private: -DLIBSSH_STATIC"
+        if [[ $TARGET == win* ]]; then
+            echo "Requires.private: iphlpapi ws2_32"
+        fi
     } >> "$FFBUILD_PREFIX"/lib/pkgconfig/libssh.pc
 }
 
